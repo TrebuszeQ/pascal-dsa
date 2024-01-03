@@ -20,12 +20,16 @@ type
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
     procedure WriteHelp; virtual;
-    function take_input_int(): Int64;
+    function take_input_int(msg: string): Int64;
     function factorial_recursive(val, i, factorial: Int64): Int64;
+    function recursive_timed(val, i, factorial: Int64, start: TDateTime): Int64;
     function factorial_iterable(arg: Int64): Int64;
+    function iterable_timed(n): Int64;
+
     function print_factorial(msg: string): Boolean;
     function menu(): Boolean;
-
+    function print_menu(options: array of string): Boolean;
+    function print_time(start: TDateTime): Boolean;
   end;
 
 { Factorial }
@@ -73,13 +77,13 @@ begin
 end;
 
 // przyjmuje wartosc Int64
-function Factorial.take_input_int(): Int64;
+function Factorial.take_input_int(msg: string): Int64;
   var
     arg: string = '0';
     res: Int64;
   begin
     repeat
-     writeLn('Podaj liczbe calkowita.');
+     writeLn(msg);
      readLn(arg);
     until TryStrToInt64(arg, res) <> False;
 
@@ -94,12 +98,28 @@ function Factorial.factorial_recursive(val, i, factorial: Int64): Int64;
               else if (i < val) then
                  begin
                    if factorial = 0 then factorial:= 1;
-                      factorial:= (factorial + factorial * i);
+                      factorial := (factorial + factorial * i);
                       writeln(factorial);
-                      i:= i + 1;
+                      i := i + 1;
                       exit(factorial_recursive(val, i, factorial));
                  end;
-         writeln(factorial);
+         exit(factorial);
+
+         end;
+
+// oblicza silnie rekursywnie, oraz wyswietla czas wykonania
+function Factorial.recursive_timed(val, i, factorial: Int64, start: TDateTime): Int64
+         begin
+              if (val <= 1) then exit(1)
+
+              else if (i < val) then
+                 begin
+                   if factorial = 0 then factorial:= 1;
+                      factorial := (factorial + factorial * i);
+                      writeln(factorial);
+                      i := i + 1;
+                      exit(factorial_recursive(val, i, factorial));
+                 end;
          exit(factorial);
 
          end;
@@ -124,19 +144,68 @@ function Factorial.print_factorial(msg: string): Boolean;
               exit(True);
          end;
 
+function Factorial.print_menu(options: array of string): Boolean;
+         var i: Int8;
+         begin
+           writeln('');
+           for i:=0 to (Length(options) + 1) do writeln(options[i]);
+           exit(True);
+         end;
+
+function Factorial.print_time(start: TDateTime): Boolean;
+         begin
+           writeLn('Program pracowal przez: ' + DateTimeToStr(Now - start)) + '.');
+         end;
+
 function Factorial.menu(): Boolean;
          var
+           arg: Int64;
+           i: Int64;
+           factorial: Int64;
            opt: Int8;
-           options: array[1..5] of string;
+           options: array of string;
 
          begin
+              setLEngth(options, 4);
               options[0] := '1. Algorytm rekursywny.';
               options[1] := '2. Algorytm iteracyjny.';
               options[2] := '3. Algorytm rekursywny z mierzeniem czasu.';
               options[3] := '4. Algorytm iteracyjny z mierzeniem czasu.';
-              options[4] := '5. Wyjscie.\n');
+              options[4] := '5. Wyjscie.\n';
+
+              opt := 0;
+              while opt <> 5 do
+                    begin
+                         print_menu(options);
+
+                         opt := abs(take_input_int('Podaj numer opcji [dodatnia liczba calkowita].'));
+
+
+                         case opt of
+                              1 : begin
+                                  arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
+                                  writeLn('Silnia z ' + IntToStr(arg) + ' wynosi ' + IntToStr(factorial_recursive(arg, 0, 0)) + '.');
+                              end;
+
+                              2 : begin
+                                  arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
+                                  writeLn('Silnia z ' + IntToStr(arg) + ' wynosi ' + IntToStr(factorial_iterable(arg)) + '.');
+                              end;
+
+                              5 : begin
+                                   writeLn('Wyjscie');
+                                   exit(True);
+                                   end;
+
+                              else
+                                begin
+                                     writeLn('Brak wybranej opcji');
+                                end;
+                         end;
+                    end;
               exit(True);
          end;
+
 
 var
   Application: Factorial;
@@ -150,15 +219,7 @@ begin
   Application.Run;
   Application.Free;
 
-  input := Application.take_input_int();
-  result := Application.factorial_recursive(input, 0, 0);
-
-  message := 'Silnia z ' + IntToStr(input) + ', rekursywnie wynosi: ' + IntToStr(result) + '.';
-  Application.print_factorial(message);
-
-  result := Application.factorial_iterable(input);
-  message := 'Silnia z ' + IntToStr(input) + ', iteracyjnie wynosi: ' + IntToStr(result) + '.';
-  Application.print_factorial(message);
+  Application.menu();
 end.
 
 
