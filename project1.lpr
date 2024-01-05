@@ -21,11 +21,12 @@ type
     destructor Destroy; override;
     procedure WriteHelp; virtual;
     function take_input_int(msg: string): Int64;
-    function factorial_recursive(val, i: Int64; factorial: uInt64): uInt64;
-    function recursive_timed(val, i: Int64; factorial: uInt64; start: TDateTime): uInt64;
-    function factorial_iterable(arg: Int64): uInt64;
-    function iterable_timed(n: Int64): uInt64;
-
+    function factorial_recursive(val, i, factorial: Int64): Int64;
+    function recursive_timed(val, i, factorial: Int64; start: TDateTime): Int64;
+    function recursive_max_timed(val, i, factorial: Int64; start: TDateTime): Int64;
+    function factorial_iterable(arg: Int64): Int64;
+    function iterable_timed(n: Int64): Int64;
+    function iterable_max_timed(n: Int64): Int64;
     function print_factorial(msg: string): Boolean;
     function menu(): Boolean;
     function print_menu(options: array of string): Boolean;
@@ -92,7 +93,7 @@ function Factorial.take_input_int(msg: string): Int64;
   end;
 
 // oblicza silnie rekursywnie
-function Factorial.factorial_recursive(val, i: Int64; factorial: uInt64): uInt64;
+function Factorial.factorial_recursive(val, i, factorial: Int64): Int64;
          begin
               if (val <= 1) then exit(1)
 
@@ -110,7 +111,7 @@ function Factorial.factorial_recursive(val, i: Int64; factorial: uInt64): uInt64
          end;
 
 // oblicza silnie rekursywnie oraz wyswietla czas wykonania
-function Factorial.recursive_timed(val, i: Int64; factorial: uInt64; start: TDateTime): uInt64;
+function Factorial.recursive_timed(val, i, factorial: Int64; start: TDateTime): Int64;
          var
            endt: TDateTime;
 
@@ -132,10 +133,37 @@ function Factorial.recursive_timed(val, i: Int64; factorial: uInt64; start: TDat
 
          end;
 
+// oblicza silnie rekursywnie oraz wyswietla czas wykonania
+function Factorial.recursive_max_timed(val, i, factorial: Int64; start: TDateTime): Int64;
+         var
+           endt: TDateTime;
+           res : array of Int64;
+         begin
+              if (val <= 1) then exit(1)
+
+              else if (i < val) then
+                 begin
+                   if factorial = 0 then factorial:= 1;
+                      factorial := (factorial + factorial * i);
+
+                      if factorial <> 0 then writeLn(factorial)
+                      else WriteLn('Overflow nastapil na wartosci: ', factorial, '. ', 'Licznik wynosi: ', i, '.');
+                           exit(factorial);
+
+                      i := i + 1;
+                      exit(recursive_timed(val, i, factorial, start));
+                 end;
+
+         endt := Now();
+         print_time(start, endt);
+         exit(factorial);
+
+         end;
+
 // oblicza silnie iteracyjnie
-function Factorial.factorial_iterable(arg: Int64): uInt64;
+function Factorial.factorial_iterable(arg: Int64): Int64;
          var i: Int64;
-           factorial: Uint64;
+           factorial: Int64;
 
          begin
               result:= 1;
@@ -149,17 +177,34 @@ function Factorial.factorial_iterable(arg: Int64): uInt64;
               exit(result);
          end;
 
-// wyswietla wynik silni z argumentu
-function Factorial.print_factorial(msg: string): Boolean;
+// oblicza silnie iteracyjnie i mierzy czas
+function Factorial.iterable_timed(n: Int64): Int64;
+         var
+           i: Int64;
+           start, endt: TDateTime;
+
          begin
-              writeLn(msg);
-              exit(True);
+              start := Now();
+              result := 1;
+
+              if n >= 1 then
+                for i := 1 to n do
+                   begin
+                        result := result * i;
+
+                        if result <> 0 then writeln(result)
+                        else WriteLn('Overflow nastapil na wartosci: ', result, '. ', 'Licznik wynosi: ', i, '.');
+                   end;
+
+              endt := Now();
+              print_time(start, endt);
+              exit(result);
          end;
 
 // oblicza silnie iteracyjnie i mierzy czas
-function Factorial.iterable_timed(n: Int64): uInt64;
+function Factorial.iterable_max_timed(n: Int64): Int64;
          var
-           i: uInt64;
+           i: Int64;
            start, endt: TDateTime;
 
          begin
@@ -179,6 +224,13 @@ function Factorial.iterable_timed(n: Int64): uInt64;
               exit(result);
          end;
 
+// wyswietla wynik silni z argumentu
+function Factorial.print_factorial(msg: string): Boolean;
+         begin
+              writeLn(msg);
+              exit(True);
+         end;
+
 function Factorial.print_menu(options: array of string): Boolean;
          var
            i: Int8;
@@ -186,7 +238,9 @@ function Factorial.print_menu(options: array of string): Boolean;
          begin
            writeln('');
 
-           for i :=0 to (Length(options) + 1) do writeln(options[i]);
+           for i := 0 to Length(options) - 1 do writeln(options[i]);
+           writeln();
+
            exit(True);
          end;
 
@@ -202,26 +256,30 @@ function Factorial.print_time(start, endt: TDateTime): Boolean;
 
            if iSeconds < 1 then writeln('Program obliczal przez: ~', iMilliseconds, ' ms.')
            else writeLn('Program obliczal przez: ~', iSeconds, ' s.');
+
+           exit(True);
          end;
 
 function Factorial.menu(): Boolean;
          var
            arg: Int64;
            i: Int64;
-           factorial: uInt64;
+           factorial: Int64;
            opt: Int8;
            options: array of string;
 
          begin
-              setLEngth(options, 5);
+              setLength(options, 7);
               options[0] := '1. Algorytm rekursywny.';
-              options[1] := '2. Algorytm iteracyjny.';
-              options[2] := '3. Algorytm rekursywny z mierzeniem czasu.';
-              options[3] := '4. Algorytm iteracyjny z mierzeniem czasu.';
-              options[4] := '5. Wyjscie.';
+              options[1] := '2. Algorytm rekursywny z mierzeniem czasu.';
+              options[2] := '3. Algorytm rekursywny z mierzeniem czasu, konczacy po przeplywie.';
+              options[3] := '4. Algorytm iteracyjny.';
+              options[4] := '5. Algorytm iteracyjny z mierzeniem czasu.';
+              options[5] := '6. Algorytm iteracyjny z mierzeniem czasu, konczacy po przeplywie.';
+              options[6] := '7. Wyjscie.';
 
               opt := 0;
-              while opt <> 5 do
+              while opt <> Length(options) - 1 do
                     begin
                          print_menu(options);
 
@@ -236,22 +294,34 @@ function Factorial.menu(): Boolean;
 
                               2 : begin
                                   arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
-                                  writeLn('Silnia z ', arg, ' wynosi ', factorial_iterable(arg), '.');
+                                  factorial := recursive_timed(arg, 0, 0, Now);
+                                  writeLn('Silnia z ', arg, ' wynosi ', factorial, '.');
                               end;
 
                               3 : begin
                                   arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
-                                  factorial := recursive_timed(arg, 0, 0, Now);
+                                  factorial := recursive_max_timed(arg, 0, 0, Now);
                                   writeLn('Silnia z ', arg, ' wynosi ', factorial, '.');
                               end;
 
                               4 : begin
                                   arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
+                                  writeLn('Silnia z ', arg, ' wynosi ', factorial_iterable(arg), '.');
+                              end;
+
+                              5 : begin
+                                  arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
                                   factorial := iterable_timed(arg);
                                   writeLn('Silnia z ', arg, ' wynosi ', factorial, '.');
                               end;
 
-                              5 : begin
+                              6 : begin
+                                  arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
+                                  factorial := iterable_max_timed(arg);
+                                  writeLn('Silnia z ', arg, ' wynosi ', factorial, '.');
+                              end;
+
+                              7 : begin
                                    writeLn('Wyjscie.');
                                    exit(True);
                                    end;

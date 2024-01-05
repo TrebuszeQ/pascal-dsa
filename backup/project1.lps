@@ -8,10 +8,10 @@
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="140"/>
-        <CursorPos X="42" Y="172"/>
-        <FoldState Value=" T3iO03b"/>
-        <UsageCount Value="30"/>
+        <TopLine Value="266"/>
+        <CursorPos Y="238"/>
+        <FoldState Value=" T3iP03A"/>
+        <UsageCount Value="32"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -24,123 +24,123 @@
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="23" Column="40"/>
+        <Caret Line="277" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="176" Column="31" TopLine="139"/>
+        <Caret Line="279" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="155" Column="30" TopLine="111"/>
+        <Caret Line="280" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="24" Column="67"/>
+        <Caret Line="282" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="23" Column="63"/>
+        <Caret Line="269" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="27" Column="29" TopLine="3"/>
+        <Caret Line="270" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="111" Column="87" TopLine="88"/>
+        <Caret Line="271" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="157" Column="75" TopLine="133"/>
+        <Caret Line="272" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="148" Column="43" TopLine="133"/>
+        <Caret Line="273" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="129" Column="45" TopLine="106"/>
+        <Caret Line="274" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="214" Column="124" TopLine="183"/>
+        <Caret Line="275" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="121" Column="69" TopLine="88"/>
+        <Caret Line="276" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="183" Column="76" TopLine="149"/>
+        <Caret Line="277" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="177" Column="32" TopLine="158"/>
+        <Caret Line="279" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="182" Column="71" TopLine="158"/>
+        <Caret Line="280" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="183" Column="76" TopLine="158"/>
+        <Caret Line="282" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="191" Column="17" TopLine="159"/>
+        <Caret Line="269" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="203" Column="31" TopLine="92"/>
+        <Caret Line="270" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="32" Column="24" TopLine="8"/>
+        <Caret Line="271" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="127" Column="10" TopLine="91"/>
+        <Caret Line="272" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="113" Column="13" TopLine="89"/>
+        <Caret Line="273" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="173" Column="37" TopLine="136"/>
+        <Caret Line="274" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="172" Column="29" TopLine="149"/>
+        <Caret Line="275" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="180" Column="36" TopLine="233"/>
+        <Caret Line="276" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="170" Column="40" TopLine="134"/>
+        <Caret Line="277" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="27" Column="32" TopLine="101"/>
+        <Caret Line="279" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="80" Column="49" TopLine="56"/>
+        <Caret Line="280" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="113" Column="51" TopLine="68"/>
+        <Caret Line="238" TopLine="221"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="164" Column="12" TopLine="140"/>
+        <Caret Line="239" TopLine="221"/>
       </Position>
       <Position>
         <Filename Value="project1.lpr"/>
-        <Caret Line="179" Column="32" TopLine="142"/>
+        <Caret Line="241" Column="45" TopLine="221"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -148,4 +148,15 @@
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="project1.lpr"/>
+        <Line Value="269"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>
