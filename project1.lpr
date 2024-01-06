@@ -10,7 +10,6 @@ uses
   { you can add units after this };
 
 type
-
   { Factorial }
 
   Factorial = class(TCustomApplication)
@@ -22,8 +21,6 @@ type
     procedure WriteHelp; virtual;
     function take_input_int(msg: string): Int64;
     function recursive(n: Int64): Int64;
-    //here
-    function recursive_max(n: Int64): array of Int64;
     function iterable(n: Int64): Int64;
     function iterable_max(n: Int64): Int64;
     function menu(): Boolean;
@@ -99,16 +96,6 @@ function Factorial.recursive(n: Int64): Int64;
          end;
 
 
-// oblicza silnie rekursywnie, przestaje na przeplywie.
-function Factorial.recursive_max(n: Int64): Int64;
-         begin
-              if (n = 0) then recursive_max := 1
-
-              else recursive_max := n * recursive_max(n-1);
-
-         end;
-
-
 // oblicza silnie iteracyjnie
 function Factorial.iterable(n: Int64): Int64;
          var i: Int64;
@@ -126,26 +113,34 @@ function Factorial.iterable(n: Int64): Int64;
          end;
 
 
-// oblicza silnie iteracyjnie i mierzy czas
-function Factorial.iterable_max(n: Int64): array of Int64;
+// oblicza silnie iteracyjnie i wyswietla licznik i silnie po wystapieniu przeplywu.
+function Factorial.iterable_max(n: Int64): Int64;
          var
            i: Int64;
+           j: boolean;
 
          begin
               result := 1;
+              j := false;
 
               if n >= 1 then
                 for i := 1 to n do
                    begin
                         result := result * i;
 
-                        if result < 0 then writeln('Przepelnienie nastapilo przy liczniku: ', i, '.')
-                           exit(result);
-
+                        if ((result * i) < 0) and (j = false) then
+                          begin
+                          j := true;
+                           writeln('Przepelnienie nastapilo przy liczniku: ', i + 1, '.');
+                           writeln('Nastepna wartosc silni wynosi: ', result * i, '.');
+                           writeln('Aktualna wartosc silni wynosi: ', result, '.');
+                          end;
                    end;
+
               exit(result);
          end;
 
+// zadanie 4.1
 
 // wyswietla menu
 function Factorial.print_menu(options: array of string): Boolean;
@@ -187,14 +182,13 @@ function Factorial.menu(): Boolean;
            start, endt: TDateTime;
 
          begin
-              setLength(options, 7);
+              setLength(options, 6);
               options[0] := '1. Algorytm rekursywny.';
               options[1] := '2. Algorytm rekursywny z mierzeniem czasu.';
-              options[2] := '3. Algorytm rekursywny z mierzeniem czasu, konczacy po przeplywie.';
-              options[3] := '4. Algorytm iteracyjny.';
-              options[4] := '5. Algorytm iteracyjny z mierzeniem czasu.';
-              options[5] := '6. Algorytm iteracyjny z mierzeniem czasu, konczacy po przeplywie.';
-              options[6] := '7. Wyjscie.';
+              options[2] := '4. Algorytm iteracyjny.';
+              options[3] := '5. Algorytm iteracyjny z mierzeniem czasu.';
+              options[4] := '6. Algorytm iteracyjny z mierzeniem czasu, wyswietlajacy dane przeplywu.';
+              options[5] := '7. Wyjscie.';
 
               opt := 0;
               while opt <> Length(options) - 1 do
@@ -226,36 +220,24 @@ function Factorial.menu(): Boolean;
                               end;
 
                               3 : begin
-                                  start := Now();
-
-                                  arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
-                                  factorial := recursive_max(arg);
-
-                                  endt := Now();
-                                  print_time(start, endt);
-
-                                  writeLn('Silnia rekurencyjnie: ', arg, ' wynosi ', factorial, '.');
-                              end;
-
-                              4 : begin
                                   arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
                                   factorial := iterable(arg);
 
+                                  writeLn('Silnia iteracyjnie: ', arg, ' wynosi ', factorial, '.');
+                              end;
+
+                              4 : begin
+                                  start := Now();
+
+                                  arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
+                                  factorial := iterable(arg);
+
+                                  endt := Now();
+                                  print_time(start, endt);
                                   writeLn('Silnia iteracyjnie: ', arg, ' wynosi ', factorial, '.');
                               end;
 
                               5 : begin
-                                  start := Now();
-
-                                  arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
-                                  factorial := iterable(arg);
-
-                                  endt := Now();
-                                  print_time(start, endt);
-                                  writeLn('Silnia iteracyjnie: ', arg, ' wynosi ', factorial, '.');
-                              end;
-
-                              6 : begin
                                   start := Now();
 
                                   arg := abs(take_input_int('Podaj dodatnia liczbe calkowita w celu obliczenia silni.'));
@@ -267,7 +249,7 @@ function Factorial.menu(): Boolean;
                                   writeLn('Silnia iteracyjnie: ', arg, ' wynosi ', factorial, '.');
                               end;
 
-                              7 : begin
+                              6 : begin
                                    writeLn('Wyjscie.');
                                    exit(True);
                                    end;
