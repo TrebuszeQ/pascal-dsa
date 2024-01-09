@@ -6,7 +6,7 @@ uses
   {$IFDEF UNIX}
   cthreads,
   {$ENDIF}
-  Classes, SysUtils, CustApp, Factorial, Single_sum, Cli
+  Classes, SysUtils, CustApp, Factorial, Floats, Cli
   { you can add units after this };
 
 type
@@ -92,7 +92,7 @@ begin
             case opt of
               1: Factorial.menu();
 
-              2: Single_sum.results();
+              2: Floats.menu();
 
               3: writeln('Wyjscie.');
 

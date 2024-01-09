@@ -101,10 +101,10 @@ function menu(): Boolean; static;
               setLength(options, 6);
               options[0] := '1. Algorytm rekursywny.';
               options[1] := '2. Algorytm rekursywny z mierzeniem czasu.';
-              options[2] := '4. Algorytm iteracyjny.';
-              options[3] := '5. Algorytm iteracyjny z mierzeniem czasu.';
-              options[4] := '6. Algorytm iteracyjny z mierzeniem czasu, wyswietlajacy dane przeplywu.';
-              options[5] := '7. Wyjscie.';
+              options[2] := '3. Algorytm iteracyjny.';
+              options[3] := '4. Algorytm iteracyjny z mierzeniem czasu.';
+              options[4] := '5. Algorytm iteracyjny z mierzeniem czasu, wyswietlajacy dane przeplywu.';
+              options[5] := '6. Wyjscie.';
 
               opt := 0;
               while opt <> Length(options) do

@@ -107,7 +107,7 @@ function menu(): Boolean; static;
               options[5] := '7. Wyjscie.';
 
               opt := 0;
-              while opt <> Length(options) - 1 do
+              while opt <> Length(options) do
                     begin
                          print_menu(options);
 

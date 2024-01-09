@@ -45,7 +45,7 @@ function menu(): boolean; static;
            writeln('Iloczyn wynosi: ', product(), '.');
            writeln('Roznica wynosi: ', difference(), '.');
 
-           writeln('Wydaje mi sie ze roznica polega na tym, ze dodajac liczba po liczbie program jest bardziej precyzyjny.');
+           writeln('Wydaje mi sie ze roznica polega z fakt, ze ta zmienna single z kazdym krokiem n traci czesc precyzji.');
            exit(True);
          end;
 

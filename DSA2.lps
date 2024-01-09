@@ -9,8 +9,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="DSA"/>
         <TopLine Value="50"/>
-        <CursorPos X="33" Y="95"/>
-        <UsageCount Value="20"/>
+        <CursorPos X="13" Y="90"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -18,18 +18,20 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Factorial"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="8" Y="19"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="124"/>
+        <CursorPos X="31" Y="107"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="single_sum.pas"/>
+        <Filename Value="floats.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Single_sum"/>
+        <UnitName Value="Floats"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="28" Y="25"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="69"/>
+        <CursorPos X="23" Y="100"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -38,39 +40,11 @@
         <UnitName Value="Cli"/>
         <EditorIndex Value="3"/>
         <CursorPos X="20" Y="30"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="factorial.pas"/>
-        <Caret Line="92" Column="10" TopLine="64"/>
-      </Position>
-      <Position>
-        <Filename Value="factorial.pas"/>
-        <Caret Line="131" Column="32" TopLine="103"/>
-      </Position>
-      <Position>
-        <Filename Value="factorial.pas"/>
-        <Caret Line="92" Column="10" TopLine="64"/>
-      </Position>
-      <Position>
-        <Filename Value="factorial.pas"/>
-        <Caret Line="131" Column="32" TopLine="103"/>
-      </Position>
-      <Position>
-        <Filename Value="factorial.pas"/>
-        <Caret Line="92" Column="10" TopLine="64"/>
-      </Position>
-      <Position>
-        <Filename Value="factorial.pas"/>
-        <Caret Line="8" Column="20"/>
-      </Position>
-      <Position>
-        <Filename Value="DSA2.lpr"/>
-        <Caret Line="22" Column="60"/>
-      </Position>
       <Position>
         <Filename Value="DSA2.lpr"/>
         <Caret Line="70" Column="61" TopLine="34"/>
@@ -137,10 +111,6 @@
       </Position>
       <Position>
         <Filename Value="DSA2.lpr"/>
-        <Caret Line="9" Column="52" TopLine="52"/>
-      </Position>
-      <Position>
-        <Filename Value="DSA2.lpr"/>
         <Caret Line="89" Column="35" TopLine="50"/>
       </Position>
       <Position>
@@ -148,20 +118,52 @@
         <Caret Line="95" Column="29" TopLine="50"/>
       </Position>
       <Position>
-        <Filename Value="single_sum.pas"/>
-        <Caret Line="38" Column="37"/>
-      </Position>
-      <Position>
         <Filename Value="DSA2.lpr"/>
         <Caret Line="95" Column="33" TopLine="50"/>
       </Position>
       <Position>
-        <Filename Value="single_sum.pas"/>
-        <Caret Line="38" Column="10"/>
+        <Filename Value="floats.pas"/>
+        <Caret Line="55" Column="43" TopLine="20"/>
       </Position>
       <Position>
-        <Filename Value="single_sum.pas"/>
-        <Caret Line="10" Column="9"/>
+        <Filename Value="floats.pas"/>
+        <Caret Line="68" Column="33" TopLine="54"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="66" Column="23" TopLine="40"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="72" Column="23" TopLine="44"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="65" Column="37" TopLine="43"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="71" Column="33" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="72" Column="55" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="75" Column="29" TopLine="50"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="74" Column="44" TopLine="43"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="82" Column="37" TopLine="59"/>
+      </Position>
+      <Position>
+        <Filename Value="floats.pas"/>
+        <Caret Line="71" Column="35" TopLine="55"/>
       </Position>
     </JumpHistory>
     <RunParams>

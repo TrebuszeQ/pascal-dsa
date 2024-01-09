@@ -6,7 +6,7 @@ uses
   {$IFDEF UNIX}
   cthreads,
   {$ENDIF}
-  Classes, SysUtils, CustApp, Factorial, Single_sum, Cli
+  Classes, SysUtils, CustApp, Factorial, Floats, Cli
   { you can add units after this };
 
 type
@@ -79,7 +79,7 @@ begin
 
   setlength(options, 3);
   options[0] := '1. Silnia.';
-  options[1] := '2. Suma single.';
+  options[1] := '2. Liczby zmiennoprzecinkowe.';
   options[2] := '3. Wyjscie.';
 
   opt := 0;
@@ -92,7 +92,7 @@ begin
             case opt of
               1: Factorial.menu();
 
-              2: Single_sum.menu();
+              2: Floats.menu();
 
               3: writeln('Wyjscie.');
 

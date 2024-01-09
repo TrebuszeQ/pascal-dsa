@@ -34,9 +34,14 @@
         <UnitName Value="Factorial"/>
       </Unit>
       <Unit>
-        <Filename Value="single_sum.pas"/>
+        <Filename Value="floats.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Single_sum"/>
+        <UnitName Value="Floats"/>
+      </Unit>
+      <Unit>
+        <Filename Value="cli.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Cli"/>
       </Unit>
     </Units>
   </ProjectOptions>
