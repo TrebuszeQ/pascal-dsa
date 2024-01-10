@@ -6,7 +6,7 @@ uses
   {$IFDEF UNIX}
   cthreads,
   {$ENDIF}
-  Classes, SysUtils, CustApp, Factorial, Floats, Cli
+  Classes, SysUtils, CustApp, Factorial, Floats, Cli, Arrays
   { you can add units after this };
 
 type
@@ -77,10 +77,11 @@ begin
   Application.Run;
   Application.Free;
 
-  setlength(options, 3);
+  setlength(options, 4);
   options[0] := '1. Silnia.';
-  options[1] := '2. Suma single.';
-  options[2] := '3. Wyjscie.';
+  options[1] := '2. Liczby zmiennoprzecinkowe.';
+  options[2] := '3. Tablice.';
+  options[3] := '4. Wyjscie.';
 
   opt := 0;
 
@@ -91,10 +92,9 @@ begin
 
             case opt of
               1: Factorial.menu();
-
               2: Floats.menu();
-
               3: writeln('Wyjscie.');
+              4: writeln('Wyjscie.');
 
               else writeLn('Brak wybranej opcji');
             end;

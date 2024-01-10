@@ -8,20 +8,25 @@ uses
   Classes, SysUtils, Cli;
 
   function sum_n_single(): single; static;
-  function product(): single; static;
+  function product_single(): single; static;
+  function difference(sum: single): single; static;
+  function difference(sum: real): real; static;
   function sum_n_real(): real; static;
   function sum_pair_single(): single; static;
   function sum_correction_single(): single; static;
+  function print_results(sum: single): boolean; static;
+  function print_results(sum: real): boolean; static;
   function menu(): boolean; static;
 
 implementation
+
 const n = 1000000;
   s = 1.23456789;
 
 // 4.2.1
 function sum_n_single(): single; static;
          var suma: single;
-           i: int64;
+           i: integer;
 
          begin
               suma := 0.0;
@@ -35,20 +40,28 @@ function sum_n_single(): single; static;
               exit(suma);
          end;
 
-function product(): single; static;
+function product_single(): single; static;
          begin
-              exit(s * n);
+              result := s * n;
+              exit(result);
          end;
 
-function difference(): single;
+function difference(sum: single): single;
          begin
-              exit(product() - sum_n_single());
+              result := product_single() - sum;
+              exit(result);
+         end;
+
+function difference(sum: real): real;
+         begin
+              result := product_single() - sum;
+              exit(result);
          end;
 
 // real 4.2.2
 function sum_n_real(): real; static;
          var suma: real;
-           i: int64;
+           i: integer;
 
          begin
               suma := 0.0;
@@ -65,7 +78,7 @@ function sum_n_real(): real; static;
 // 4.3.1
 function sum_pair_single(): single; static;
          var suma, sumai: single;
-             i: int64;
+             i: integer;
 
          begin
               suma := 0.0;
@@ -76,14 +89,15 @@ function sum_pair_single(): single; static;
                        if (i mod 2) <> 0 then sumai += s
                        else suma += s;
                   end;
-              writeln(suma, sumai);
-              exit(suma+sumai);
+
+              suma += sumai;
+              exit(suma);
          end;
 
 // 4.3.2
 function sum_correction_single(): single; static;
          var suma, sumai, poprawka: single;
-             i, n: integer;
+             i: integer;
 
          begin
               suma := 0.0;
@@ -94,10 +108,28 @@ function sum_correction_single(): single; static;
                     sumai := suma + s;
                     poprawka := suma - sumai + s + poprawka;
                     suma := sumai;
-                    suma += poprawka;
                   end;
 
+             suma += poprawka;
              exit(suma);
+         end;
+
+function print_results(sum: single): boolean; static;
+         begin
+              writeln('Suma wynosi: ', sum:0:10);
+              writeln('Iloczyn wynosi: ', product_single():0:10);
+              writeln('Roznica wynosi: ', difference(sum):0:10);
+
+              exit(true)
+         end;
+
+function print_results(sum: real): boolean; static;
+         begin
+              writeln('Suma wynosi: ', sum:0:10);
+              writeln('Iloczyn wynosi: ', product_single():0:10);
+              writeln('Roznica wynosi: ', difference(sum):0:10);
+
+              exit(true)
          end;
 
 function menu(): boolean; static;
@@ -107,14 +139,12 @@ function menu(): boolean; static;
            opt: Int32;
 
          begin
-              setlength(options, 7);
+              setlength(options, 5);
               options[0] := '1. Suma single.';
-              options[1] := '2. Iloczyn single.';
-              options[2] := '3. Roznica single.';
-              options[3] := '4. Suma real.';
-              options[4] := '5. Suma par single.';
-              options[5] := '6. Suma z poprawka.';
-              options[6] := '7. Wyjscie.';
+              options[1] := '2. Suma real.';
+              options[2] := '3. Algorytm z parami.';
+              options[3] := '4. Algorytm z korekcja.';
+              options[4] := '5. Wyjscie.';
 
               opt := 0;
 
@@ -124,22 +154,15 @@ function menu(): boolean; static;
                          opt := Cli.take_input_int('Wprowadz numer odpowiadajacy opcji [typu calkowitego].');
 
                          case opt of
-                              1: writeln('Suma typu single wynosi: ', sum_n_single():0:10, '.');
+                              1: print_results(sum_n_single);
 
-                              2: writeln('Iloczyn typu single wynosi: ', product(), '.');
+                              2: print_results(sum_n_real);
 
-                              3: begin
-                                      writeln('Roznica sumy i iloczynu typu single wynosi: ', difference():0:10, '.');
-                                      writeln('Zmienna single z kazdym krokiem n traci czesc precyzji.');
-                              end;
+                              3: print_results(sum_pair_single);
 
-                              4: writeln('Suma liczb typu real wynosi: ', sum_n_real():0:10, '.');
+                              4: print_results(sum_correction_single);
 
-                              5: writeln('Suma par typu single wynosi: ', sum_pair_single():0:10, '.');
-
-                              6: writeln('Suma typu single z poprawka wynosi: ', sum_correction_single():0:10, '.');
-
-                              7: writeln('Wyjscie.');
+                              5: writeln('Wyjscie.');
 
                               else writeLn('Brak wybranej opcji');
                          end;

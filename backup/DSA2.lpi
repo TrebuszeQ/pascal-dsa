@@ -43,6 +43,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Cli"/>
       </Unit>
+      <Unit>
+        <Filename Value="arrays.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Arrays"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
