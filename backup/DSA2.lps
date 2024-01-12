@@ -10,7 +10,7 @@
         <UnitName Value="DSA"/>
         <TopLine Value="49"/>
         <CursorPos X="39" Y="96"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="39"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,7 +20,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="107"/>
         <CursorPos X="31" Y="107"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="39"/>
       </Unit>
       <Unit>
         <Filename Value="floats.pas"/>
@@ -29,7 +29,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="112"/>
         <CursorPos X="39" Y="136"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="39"/>
       </Unit>
       <Unit>
         <Filename Value="cli.pas"/>
@@ -37,7 +37,7 @@
         <UnitName Value="Cli"/>
         <EditorIndex Value="2"/>
         <CursorPos X="20" Y="30"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="39"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -46,100 +46,132 @@
         <UnitName Value="Arrays"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="49"/>
-        <CursorPos X="45" Y="84"/>
-        <UsageCount Value="27"/>
+        <TopLine Value="18"/>
+        <CursorPos X="54" Y="45"/>
+        <UsageCount Value="32"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="21">
+    <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="22" Column="33"/>
+        <Caret Line="62" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="65" Column="107" TopLine="42"/>
+        <Caret Line="63" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="95" Column="56" TopLine="51"/>
+        <Caret Line="60" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="65" Column="59" TopLine="37"/>
+        <Caret Line="62" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="39" Column="38" TopLine="37"/>
+        <Caret Line="63" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="75" Column="54" TopLine="47"/>
+        <Caret Line="60" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="77" Column="34" TopLine="47"/>
+        <Caret Line="62" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="76" Column="73" TopLine="48"/>
+        <Caret Line="63" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="60" Column="33" TopLine="37"/>
+        <Caret Line="60" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="66" Column="64" TopLine="37"/>
+        <Caret Line="62" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="70" Column="48" TopLine="40"/>
+        <Caret Line="63" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="81" Column="80" TopLine="46"/>
+        <Caret Line="60" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="80" Column="33" TopLine="48"/>
+        <Caret Line="62" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="81" Column="82" TopLine="45"/>
+        <Caret Line="63" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="83" Column="34" TopLine="45"/>
+        <Caret Line="60" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="78" Column="38" TopLine="48"/>
+        <Caret Line="62" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="76" Column="60" TopLine="48"/>
+        <Caret Line="63" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="79" Column="45" TopLine="51"/>
+        <Caret Line="60" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="85" Column="71" TopLine="48"/>
+        <Caret Line="62" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="82" Column="76" TopLine="54"/>
+        <Caret Line="63" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="80" Column="57" TopLine="52"/>
+        <Caret Line="60" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="arrays.pas"/>
-        <Caret Line="78" Column="41" TopLine="52"/>
+        <Caret Line="62" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="arrays.pas"/>
+        <Caret Line="63" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="arrays.pas"/>
+        <Caret Line="60" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="arrays.pas"/>
+        <Caret Line="62" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="arrays.pas"/>
+        <Caret Line="63" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="arrays.pas"/>
+        <Caret Line="60" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="arrays.pas"/>
+        <Caret Line="96" Column="38" TopLine="54"/>
+      </Position>
+      <Position>
+        <Filename Value="arrays.pas"/>
+        <Caret Line="13" Column="54"/>
+      </Position>
+      <Position>
+        <Filename Value="arrays.pas"/>
+        <Caret Line="196" Column="58" TopLine="153"/>
       </Position>
     </JumpHistory>
     <RunParams>
