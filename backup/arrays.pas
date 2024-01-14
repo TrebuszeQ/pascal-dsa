@@ -8,19 +8,22 @@ uses
   Classes, SysUtils, Cli;
   //Nr_dnia liczba_zachor_kobiet liczba_zachor_mężczyzn liczba_zgon_kob. liczba_zgon_męż.
   var x, y: uInt8;
-  type AAllStats = array [0..30, 0..4] of integer;
+  type ADailyStats = array [0..30, 0..4] of integer;
   type TSTArr = array [0..3] of int32;
-  type TAArr = array[0..30, 0..2] of integer;
+  type TAArr = array [0..30, 0..2] of integer;
+  type A
   //dzien1, dzienn, dzienn+1
   type ADeaths = array of integer;
   function random_int(min, max: integer): integer; static;
-  function max_deaths(arr: AAllStats): ADeaths; static;
-  function avg_daily_sickness(arr: AAllStats): TAArr; static;
-  function sum_sickness(arr: AAllStats): TSTArr; static;
-  function gen_array(): AAllStats; static;
+  function find_max_deaths(arr: ADailyStats): integer; static;
+  function find_max_death_days(arr: ADailyStats; max: integer): ADeaths; static;
+  function avg_daily_sickness(arr: ADailyStats): TAArr; static;
+  function sum_sickness(arr: ADailyStats): TSTArr; static;
+  function gen_array(): ADailyStats; static;
+  function print_max_death_days(arr: ADeaths; max: integer): boolean; static;
   function print_avg(arr: TAArr): boolean; static;
   function print_sums(arr: TSTArr): Boolean; static;
-  function print_array(arr: AAllStats): Boolean; static;
+  function print_array(arr: ADailyStats): Boolean; static;
   function menu(): boolean; static;
 
 implementation
@@ -39,13 +42,13 @@ function random_int(min, max: integer): integer; static;
          end;
 
 
-function max_deaths(arr: AAllStats): ADeaths; static;
-         var i, count: smallint;
-         current: int32;
-         max: integer;
+function find_max_deaths(arr: ADailyStats): integer; static;
+         var
+            i : smallint;
+            current: int32;
+            max: integer;
 
          begin
-              count := 0;
               max := 0;
 
               for i := 0 to (length(arr) - 1) do
@@ -54,21 +57,35 @@ function max_deaths(arr: AAllStats): ADeaths; static;
                     if current > max then max := current;
                   end;
 
-              // wrong
-              for i := 0 to (length(arr) - 1) do
-                  begin
-                       if (current = max) then
-                          begin
-                            result[count] += max;
-                            count += 1;
-                          end;
-                  end;
-
-              writeln(length(result));
+              exit(max);
          end;
 
 
-function avg_daily_sickness(arr: AAllStats): TAArr; static;
+function find_max_death_days(arr: ADailyStats; max: integer): ADeaths; static;
+         var i, count: smallint;
+             current: int32;
+
+         begin
+              count := 0;
+              max := find_max_deaths(arr);
+              setlength(result, 0);
+
+              for i := 0 to (length(arr) - 1) do
+                  begin
+                       current := (arr[i, 3] + arr[i, 4]);
+
+                       if (current = max) then
+                          begin
+                               setlength(result, count + 1);
+                               result[count] := arr[i][0];
+                               count += 1;
+                          end;
+                  end;
+              exit(result);
+         end;
+
+
+function avg_daily_sickness(arr: ADailyStats): TAArr; static;
          var i: smallint;
 
          begin
@@ -80,7 +97,7 @@ function avg_daily_sickness(arr: AAllStats): TAArr; static;
          end;
 
 
-function sum_sickness(arr: AAllStats): TSTArr; static;
+function sum_sickness(arr: ADailyStats): TSTArr; static;
          var i: smallint;
 
          begin
@@ -96,7 +113,7 @@ function sum_sickness(arr: AAllStats): TSTArr; static;
          end;
 
 
-function gen_array(): AAllStats; static;
+function gen_array(): ADailyStats; static;
          var i: smallint;
          //Nr_dnia liczba_zachor_kobiet liczba_zachor_mężczyzn liczba_zgon_kob. liczba_zgon_męż.
          begin
@@ -118,23 +135,28 @@ function gen_array(): AAllStats; static;
          end;
 
 
-function print_max_deaths(arr: ADeaths): boolean; static;
+function print_max_death_days(arr: ADeaths; max: integer): boolean; static;
          var i: smallint;
 
          begin
-              if length(arr) > 1 then writeln(format('%10s %7d', ['Najwieksza liczba zgonow wystapila w dniu:', arr[0]]))
+              writeln();
+              if length(arr) <= 1 then writeln(format('%10s %7d', ['Najwieksza liczba zgonow wystapila w dniu:  ', arr[0]]))
               else
                 begin
-                  writeln('Najwieksza liczba zgonow wystapila w dniach: ');
+                     writeln(format('%10s', ['Najwieksza liczba zgonow wystapila w dniach: ']));
 
-                for i := 0 to (length(arr) - 1) do
-                    begin
-                         if ((i - 1) = (length(arr) - 1)) then write(arr[i], '.')
-                         else write(arr[i], ', ');
-                    end;
-                end;
+
+                     for i := 0 to length(arr) do
+                         begin
+                              if ((i - 1) = (length(arr) - 1)) then write(arr[i], '.')
+                              else write(arr[i], ', ');
+                         end;
+                     end;
+              Writeln(format('%10s %7d', ['Liczba zgonow wynosila: ', max]));
+              writeln();
               exit(true);
          end;
+
 
 function print_avg(arr: TAArr): boolean; static;
          var i: smallint;
@@ -168,7 +190,7 @@ function print_sums(arr: TSTArr): boolean; static;
          end;
 
 
-function print_array(arr: AAllStats): boolean; static;
+function print_array(arr: ADailyStats): boolean; static;
          var i: smallint;
 
          begin
@@ -197,10 +219,11 @@ function print_array(arr: AAllStats): boolean; static;
 function menu(): boolean; static;
          var options: array of string;
            opt: Int32;
-           arr: AAllStats;
+           daily_stats: ADailyStats;
            sums: TSTArr;
            avg: TAArr;
-           max: ADeaths;
+           max_deaths: integer;
+           deaths_arr: ADeaths;
 
          begin
 
@@ -211,11 +234,13 @@ function menu(): boolean; static;
               options[3] := '4. Dzien z najwieksza liczba zgonow.';
               options[4] := '5. Wyjscie.';
 
+              randomize;
               opt := 0;
-              arr := gen_array();
-              sums := sum_sickness(arr);
-              avg := avg_daily_sickness(arr);
-              max := max_deaths(arr);
+              daily_stats := gen_array();
+              sums := sum_sickness(daily_stats);
+              avg := avg_daily_sickness(daily_stats);
+              max_deaths := find_max_deaths(daily_stats);
+              deaths_arr := find_max_death_days(daily_stats, max_deaths);
 
               while opt <> length(options) do
                     begin
@@ -224,20 +249,15 @@ function menu(): boolean; static;
 
 
                          case opt of
-                              1: begin
-                                 print_array(arr);
-                                 randomize;
-                              end;
+                              1: print_array(daily_stats);
 
                               2: print_sums(sums);
 
                               3: print_avg(avg);
 
-                              4: print_max_deaths(max);
+                              4: print_max_death_days(deaths_arr, max_deaths);
 
-                              5: begin
-                                writeln('Wyjscie');
-                              end;
+                              5: writeln('Wyjscie');
 
                               else writeLn('Brak wybranej opcji');
                          end;
