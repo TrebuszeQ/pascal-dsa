@@ -8,22 +8,20 @@ uses
   Classes, SysUtils, Cli;
   //Nr_dnia liczba_zachor_kobiet liczba_zachor_mężczyzn liczba_zgon_kob. liczba_zgon_męż.
   var x, y: uInt8;
-  type AAllStats = array of array;
   type ADailyStats = array [0..30, 0..4] of integer;
-  type TSTArr = array [0..3] of int32;
-  type TAArr = array [0..30, 0..2] of integer;
-  type A
+  type ASicknessSums = array [0..3] of int32;
+  type AAvgSickness = array [0..30, 0..2] of integer;
   //dzien1, dzienn, dzienn+1
   type ADeaths = array of integer;
   function random_int(min, max: integer): integer; static;
   function find_max_deaths(arr: ADailyStats): integer; static;
   function find_max_death_days(arr: ADailyStats; max: integer): ADeaths; static;
-  function avg_daily_sickness(arr: ADailyStats): TAArr; static;
-  function sum_sickness(arr: ADailyStats): TSTArr; static;
+  function avg_daily_sickness(arr: ADailyStats): AAvgSickness; static;
+  function sum_sickness(arr: ADailyStats): ASicknessSums; static;
   function gen_array(): ADailyStats; static;
   function print_max_death_days(arr: ADeaths; max: integer): boolean; static;
-  function print_avg(arr: TAArr): boolean; static;
-  function print_sums(arr: TSTArr): Boolean; static;
+  function print_avg(arr: AAvgSickness): boolean; static;
+  function print_sums(arr: ASicknessSums): Boolean; static;
   function print_array(arr: ADailyStats): Boolean; static;
   function menu(): boolean; static;
 
@@ -68,7 +66,6 @@ function find_max_death_days(arr: ADailyStats; max: integer): ADeaths; static;
 
          begin
               count := 0;
-              max := find_max_deaths(arr);
               setlength(result, 0);
 
               for i := 0 to (length(arr) - 1) do
@@ -86,7 +83,7 @@ function find_max_death_days(arr: ADailyStats; max: integer): ADeaths; static;
          end;
 
 
-function avg_daily_sickness(arr: ADailyStats): TAArr; static;
+function avg_daily_sickness(arr: ADailyStats): AAvgSickness; static;
          var i: smallint;
 
          begin
@@ -98,7 +95,7 @@ function avg_daily_sickness(arr: ADailyStats): TAArr; static;
          end;
 
 
-function sum_sickness(arr: ADailyStats): TSTArr; static;
+function sum_sickness(arr: ADailyStats): ASicknessSums; static;
          var i: smallint;
 
          begin
@@ -159,7 +156,7 @@ function print_max_death_days(arr: ADeaths; max: integer): boolean; static;
          end;
 
 
-function print_avg(arr: TAArr): boolean; static;
+function print_avg(arr: AAvgSickness): boolean; static;
          var i: smallint;
 
          begin
@@ -177,7 +174,7 @@ function print_avg(arr: TAArr): boolean; static;
          end;
 
 
-function print_sums(arr: TSTArr): boolean; static;
+function print_sums(arr: ASicknessSums): boolean; static;
          var i: smallint;
 
          begin
@@ -221,11 +218,10 @@ function menu(): boolean; static;
          var options: array of string;
            opt: Int32;
            daily_stats: ADailyStats;
-           sums: TSTArr;
-           avg: TAArr;
+           sums: ASicknessSums;
+           avg: AAvgSickness;
            max_deaths: integer;
            deaths_arr: ADeaths;
-
          begin
 
               setlength(options, 5);
